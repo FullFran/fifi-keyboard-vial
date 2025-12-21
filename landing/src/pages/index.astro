@@ -1,0 +1,217 @@
+---
+import CombosDisplay from "../components/CombosDisplay.astro";
+import KeyboardVisualizer from "../components/KeyboardVisualizer.astro";
+import LayerSelector from "../components/LayerSelector.astro";
+import Layout from "../layouts/Layout.astro";
+
+const base = import.meta.env.BASE_URL;
+---
+
+<Layout title="Fifi Keyboard - Keymap Visualizer">
+  <main class="main">
+    <header class="hero">
+      <div class="hero__badge">Vial-QMK Firmware</div>
+      <h1 class="hero__title">
+        Fifi <span class="hero__highlight">Keyboard</span>
+      </h1>
+      <p class="hero__subtitle">
+        Split 36-key ergonomic keyboard with home row mods
+      </p>
+    </header>
+
+    <section class="keymap-section">
+      <LayerSelector initialLayer={0} />
+      <KeyboardVisualizer initialLayer={0} />
+    </section>
+
+    <CombosDisplay />
+
+    <section class="features">
+      <h2 class="features__title">Features</h2>
+      <div class="features__grid">
+        <div class="feature">
+          <div class="feature__icon">⌨️</div>
+          <h3 class="feature__name">Home Row Mods</h3>
+          <p class="feature__desc">GUI, Alt, Ctrl, Shift on home row</p>
+        </div>
+        <div class="feature">
+          <div class="feature__icon">🎮</div>
+          <h3 class="feature__name">Gaming Layer</h3>
+          <p class="feature__desc">Dedicated layer without hold behaviors</p>
+        </div>
+        <div class="feature">
+          <div class="feature__icon">🖱️</div>
+          <h3 class="feature__name">Mouse Keys</h3>
+          <p class="feature__desc">Full mouse control via keyboard</p>
+        </div>
+        <div class="feature">
+          <div class="feature__icon">🌈</div>
+          <h3 class="feature__name">RGB Control</h3>
+          <p class="feature__desc">54 LEDs with full customization</p>
+        </div>
+        <div class="feature">
+          <div class="feature__icon">🔗</div>
+          <h3 class="feature__name">Combos</h3>
+          <p class="feature__desc">Vial-configurable key combos</p>
+        </div>
+        <div class="feature">
+          <div class="feature__icon">💡</div>
+          <h3 class="feature__name">OLED Display</h3>
+          <p class="feature__desc">Layer status and logo on both halves</p>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="footer__links">
+        <a
+          href="https://github.com/fullfran/fifi-keyboard-vial"
+          target="_blank"
+          rel="noopener"
+        >
+          GitHub Repository
+        </a>
+        <span class="footer__divider">•</span>
+        <a href="https://get.vial.today" target="_blank" rel="noopener">
+          Vial Configurator
+        </a>
+      </div>
+      <p class="footer__hardware">
+        Controller: RP2040 Pro Micro • Split Serial • 36 Keys (3×5+3)
+      </p>
+    </footer>
+  </main>
+</Layout>
+
+<style>
+  .main {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 1rem;
+  }
+
+  .hero {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .hero__badge {
+    display: inline-block;
+    padding: 0.375rem 1rem;
+    background: var(--color-accent-soft);
+    border: 1px solid var(--color-accent);
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--color-accent);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 1rem;
+  }
+
+  .hero__title {
+    font-size: clamp(2.5rem, 8vw, 4rem);
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.02em;
+  }
+
+  .hero__highlight {
+    background: linear-gradient(135deg, var(--color-accent) 0%, #a855f7 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero__subtitle {
+    font-size: 1.125rem;
+    color: var(--color-text-secondary);
+    max-width: 400px;
+    margin: 0 auto;
+  }
+
+  .keymap-section {
+    width: 100%;
+    max-width: 900px;
+    margin-bottom: 4rem;
+  }
+
+  .features {
+    width: 100%;
+    max-width: 900px;
+    margin-bottom: 4rem;
+  }
+
+  .features__title {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 2rem;
+    color: var(--color-text-secondary);
+  }
+
+  .features__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1rem;
+  }
+
+  .feature {
+    padding: 1.25rem;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    transition: all 0.2s ease;
+  }
+
+  .feature:hover {
+    border-color: var(--color-accent);
+    transform: translateY(-2px);
+  }
+
+  .feature__icon {
+    font-size: 1.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .feature__name {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+  }
+
+  .feature__desc {
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+  }
+
+  .footer {
+    text-align: center;
+    padding-top: 2rem;
+    border-top: 1px solid var(--color-border);
+    width: 100%;
+    max-width: 600px;
+  }
+
+  .footer__links {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .footer__divider {
+    color: var(--color-border);
+  }
+
+  .footer__hardware {
+    font-size: 0.75rem;
+    font-family: var(--font-mono);
+    color: var(--color-text-secondary);
+    opacity: 0.7;
+  }
+</style>

@@ -1,0 +1,128 @@
+---
+import KeyCap from "./KeyCap.astro";
+import { layers, keyPositions } from "../data/keymap";
+
+export interface Props {
+  initialLayer?: number;
+}
+
+const { initialLayer = 0 } = Astro.props;
+---
+
+<div class="keyboard-visualizer" data-active-layer={initialLayer}>
+  <div class="keyboard-container">
+    {
+      layers.map((layer, layerIndex) => (
+        <div
+          class:list={[
+            "keyboard-layer",
+            { "keyboard-layer--active": layerIndex === initialLayer },
+          ]}
+          data-layer-index={layerIndex}
+        >
+          {layer.keys.map((key, keyIndex) => (
+            <KeyCap
+              label={key.label}
+              sublabel={key.sublabel}
+              hold={key.hold}
+              x={keyPositions[keyIndex].x}
+              y={keyPositions[keyIndex].y}
+              h={keyPositions[keyIndex].h}
+              layerColor={layer.color}
+            />
+          ))}
+        </div>
+      ))
+    }
+  </div>
+
+  <div class="keyboard-info">
+    <span class="keyboard-info__name">Fifi Split</span>
+    <span class="keyboard-info__layout">3×5 + 3 thumbs</span>
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const keyboard = document.querySelector(".keyboard-visualizer");
+    const layers = document.querySelectorAll(".keyboard-layer");
+
+    keyboard?.addEventListener("layerchange", ((e: CustomEvent) => {
+      const newLayer = e.detail.layer;
+
+      layers.forEach((layer, index) => {
+        if (index === newLayer) {
+          layer.classList.add("keyboard-layer--active");
+        } else {
+          layer.classList.remove("keyboard-layer--active");
+        }
+      });
+    }) as EventListener);
+  });
+</script>
+
+<style>
+  .keyboard-visualizer {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+  }
+
+  .keyboard-container {
+    position: relative;
+    width: 728px; /* 13 * 56px */
+    height: 290px; /* ~5.2 * 56px */
+  }
+
+  .keyboard-layer {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+
+  .keyboard-layer--active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .keyboard-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2rem;
+    color: var(--color-text-secondary);
+    font-size: 0.875rem;
+  }
+
+  .keyboard-info__name {
+    font-weight: 600;
+    color: var(--color-text);
+  }
+
+  .keyboard-info__layout {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    opacity: 0.7;
+  }
+
+  @media (max-width: 800px) {
+    .keyboard-container {
+      transform: scale(0.7);
+      transform-origin: top center;
+    }
+
+    .keyboard-visualizer {
+      padding: 1rem;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .keyboard-container {
+      transform: scale(0.5);
+    }
+  }
+</style>

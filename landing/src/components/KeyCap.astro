@@ -1,0 +1,115 @@
+---
+export interface Props {
+  label: string;
+  sublabel?: string;
+  hold?: string;
+  x: number;
+  y: number;
+  h?: number;
+  layerColor: string;
+}
+
+const { label, sublabel, hold, x, y, h = 1, layerColor } = Astro.props;
+
+const scale = 56; // pixels per unit
+const gap = 4;
+const width = scale - gap;
+const height = scale * h - gap;
+const left = x * scale;
+const top = y * scale;
+
+const isEmpty = !label && !sublabel && !hold;
+---
+
+<div
+  class:list={[
+    "keycap",
+    { "keycap--empty": isEmpty, "keycap--has-hold": hold },
+  ]}
+  style={`left: ${left}px; top: ${top}px; width: ${width}px; height: ${height}px; --layer-color: ${layerColor};`}
+>
+  {hold && <span class="keycap__hold">{hold}</span>}
+  <span class="keycap__label">{label}</span>
+  {sublabel && <span class="keycap__sublabel">{sublabel}</span>}
+</div>
+
+<style>
+  .keycap {
+    position: absolute;
+    background: linear-gradient(
+      145deg,
+      var(--color-surface) 0%,
+      var(--color-bg-tertiary) 100%
+    );
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--color-text);
+    transition: all 0.2s ease;
+    box-shadow:
+      0 2px 4px rgba(0, 0, 0, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    cursor: default;
+    user-select: none;
+  }
+
+  .keycap:hover {
+    transform: translateY(-2px);
+    border-color: var(--layer-color);
+    box-shadow:
+      0 4px 12px rgba(0, 0, 0, 0.3),
+      0 0 0 1px var(--layer-color),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  }
+
+  .keycap--empty {
+    opacity: 0.3;
+    background: var(--color-bg-secondary);
+  }
+
+  .keycap--empty:hover {
+    transform: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+
+  .keycap--has-hold {
+    background: linear-gradient(
+      145deg,
+      color-mix(in srgb, var(--layer-color) 15%, var(--color-surface)) 0%,
+      var(--color-bg-tertiary) 100%
+    );
+    border-color: color-mix(
+      in srgb,
+      var(--layer-color) 40%,
+      var(--color-border)
+    );
+  }
+
+  .keycap__label {
+    font-size: 13px;
+    line-height: 1.2;
+  }
+
+  .keycap__sublabel {
+    font-size: 9px;
+    color: var(--color-text-secondary);
+    margin-top: 1px;
+  }
+
+  .keycap__hold {
+    position: absolute;
+    top: 3px;
+    right: 4px;
+    font-size: 8px;
+    color: var(--layer-color);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+</style>

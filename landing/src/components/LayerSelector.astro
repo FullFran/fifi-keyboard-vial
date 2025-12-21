@@ -1,0 +1,123 @@
+---
+import { layers } from "../data/keymap";
+
+export interface Props {
+  initialLayer?: number;
+}
+
+const { initialLayer = 0 } = Astro.props;
+---
+
+<div class="layer-selector" data-initial-layer={initialLayer}>
+  <div class="layer-selector__tabs">
+    {
+      layers.map((layer, index) => (
+        <button
+          class:list={[
+            "layer-tab",
+            { "layer-tab--active": index === initialLayer },
+          ]}
+          data-layer={index}
+          style={`--tab-color: ${layer.color};`}
+        >
+          <span class="layer-tab__name">{layer.name}</span>
+          <span class="layer-tab__index">L{index}</span>
+        </button>
+      ))
+    }
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const tabs = document.querySelectorAll(".layer-tab");
+    const keyboard = document.querySelector(".keyboard-visualizer");
+
+    tabs.forEach((tab) => {
+      tab.addEventListener("click", () => {
+        const layerIndex = tab.getAttribute("data-layer");
+
+        // Update active tab
+        tabs.forEach((t) => t.classList.remove("layer-tab--active"));
+        tab.classList.add("layer-tab--active");
+
+        // Update keyboard display
+        if (keyboard) {
+          keyboard.setAttribute("data-active-layer", layerIndex || "0");
+
+          // Trigger custom event for keyboard update
+          keyboard.dispatchEvent(
+            new CustomEvent("layerchange", {
+              detail: { layer: parseInt(layerIndex || "0") },
+            })
+          );
+        }
+      });
+    });
+  });
+</script>
+
+<style>
+  .layer-selector {
+    margin-bottom: 2rem;
+  }
+
+  .layer-selector__tabs {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .layer-tab {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0.75rem 1.25rem;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: var(--font-sans);
+    color: var(--color-text-secondary);
+  }
+
+  .layer-tab:hover {
+    background: var(--color-surface-hover);
+    border-color: var(--tab-color);
+  }
+
+  .layer-tab--active {
+    background: color-mix(in srgb, var(--tab-color) 15%, var(--color-surface));
+    border-color: var(--tab-color);
+    color: var(--color-text);
+    box-shadow: 0 0 20px color-mix(in srgb, var(--tab-color) 30%, transparent);
+  }
+
+  .layer-tab__name {
+    font-size: 0.875rem;
+    font-weight: 600;
+  }
+
+  .layer-tab--active .layer-tab__name {
+    color: var(--tab-color);
+  }
+
+  .layer-tab__index {
+    font-size: 0.7rem;
+    font-family: var(--font-mono);
+    opacity: 0.6;
+    margin-top: 2px;
+  }
+
+  @media (max-width: 640px) {
+    .layer-tab {
+      padding: 0.5rem 0.75rem;
+    }
+
+    .layer-tab__name {
+      font-size: 0.75rem;
+    }
+  }
+</style>
