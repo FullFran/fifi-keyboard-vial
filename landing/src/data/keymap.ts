@@ -485,10 +485,10 @@ export const keyPositions = [
   { x: 3, y: 3.7, h: 1 },
   { x: 4, y: 3.7, h: 1 },
   { x: 5, y: 3.2, h: 1.5 },
-  // Thumbs - Right (indices 33-35)
-  { x: 7, y: 3.2, h: 1.5 },
-  { x: 8, y: 3.7, h: 1 },
+  // Thumbs - Right (indices 33-35) - positions swapped for correct visual order
   { x: 9, y: 3.7, h: 1 },
+  { x: 8, y: 3.7, h: 1 },
+  { x: 7, y: 3.2, h: 1.5 },
 ];
 
 // Combos extracted from layout.vil
