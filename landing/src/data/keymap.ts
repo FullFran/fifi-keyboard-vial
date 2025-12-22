@@ -215,34 +215,34 @@ export const layers: Layer[] = [
     name: 'Raise',
     color: '#f59e0b',
     keys: [
-      // Row 1
-      { label: '!' },
-      { label: '@' },
-      { label: '#' },
-      { label: '$' },
-      { label: '%' },
+      // Row 1 - RSFT(KC_1), RALT(KC_2), RALT(KC_3), RSFT(KC_4), RSFT(KC_5)
+      { label: '!' },               // RSFT(KC_1) → !
+      { label: '@', sublabel: 'AltGr' },  // RALT(KC_2) → @
+      { label: '#', sublabel: 'AltGr' },  // RALT(KC_3) → #
+      { label: '$' },               // RSFT(KC_4) → $
+      { label: '%' },               // RSFT(KC_5) → %
       { label: 'F10' },
       { label: 'F11' },
       { label: '⬆', sublabel: 'Scroll' },
       { label: '⬇', sublabel: 'Scroll' },
-      { label: '_' },
-      // Row 2
-      { label: '`', sublabel: 'AltGr' },
-      { label: '\'', sublabel: 'AltGr' },
-      { label: '[', sublabel: 'AltGr' },
-      { label: '*' },
-      { label: '-' },
+      { label: '_' },               // S(KC_MINS) → _
+      // Row 2 - RALT(KC_GRV), RALT(KC_QUOT), RALT(KC_LBRC), S(KC_8), KC_MINS
+      { label: '\\', sublabel: 'AltGr' },  // RALT(KC_GRV) → \ 
+      { label: '{', sublabel: 'AltGr' },   // RALT(KC_QUOT) → {
+      { label: '[', sublabel: 'AltGr' },   // RALT(KC_LBRC) → [
+      { label: '(' },               // S(KC_8) → (
+      { label: "'" },               // KC_MINS → ' (on ES keyboard)
       { label: '←' },
       { label: '↓' },
       { label: '↑' },
       { label: '→' },
       { label: 'RClick' },
-      // Row 3
-      { label: '^' },
-      { label: '\\', sublabel: 'AltGr' },
-      { label: ']', sublabel: 'AltGr' },
-      { label: '(' },
-      { label: '"' },
+      // Row 3 - RSFT(KC_6), RALT(KC_BSLS), RALT(KC_RBRC), S(KC_9), RSFT(KC_2)
+      { label: '&' },               // RSFT(KC_6) → &
+      { label: '}', sublabel: 'AltGr' },   // RALT(KC_BSLS) → }
+      { label: ']', sublabel: 'AltGr' },   // RALT(KC_RBRC) → ]
+      { label: ')' },               // S(KC_9) → )
+      { label: '"' },               // RSFT(KC_2) → "
       { label: '◀', sublabel: 'Mouse' },
       { label: '▼', sublabel: 'Mouse' },
       { label: '▲', sublabel: 'Mouse' },

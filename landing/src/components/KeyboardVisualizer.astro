@@ -23,7 +23,7 @@ const { initialLayer = 0 } = Astro.props;
         >
           {layer.keys.map((key, keyIndex) => (
             <KeyCap
-              label={getLocalizedLabel(key.label, 'ES')}
+              label={getLocalizedLabel(key.label, "ES", key.sublabel)}
               sublabel={key.sublabel}
               hold={key.hold}
               x={keyPositions[keyIndex].x}
