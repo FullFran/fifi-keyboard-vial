@@ -1,6 +1,7 @@
 ---
 import KeyCap from "./KeyCap.astro";
 import { layers, keyPositions } from "../data/keymap";
+import { getLocalizedLabel } from "../utils/keymap-locale";
 
 export interface Props {
   initialLayer?: number;
@@ -22,7 +23,7 @@ const { initialLayer = 0 } = Astro.props;
         >
           {layer.keys.map((key, keyIndex) => (
             <KeyCap
-              label={key.label}
+              label={getLocalizedLabel(key.label, 'ES')}
               sublabel={key.sublabel}
               hold={key.hold}
               x={keyPositions[keyIndex].x}

@@ -13,7 +13,7 @@ A comprehensive project providing stable, production-ready firmware for the Fifi
 *   **DIY Builders:** Makers who enjoy handwiring projects and want a proven firmware foundation for their Fifi build.
 
 ## 4. Key Features (Landing Page)
-*   **Interactive Keymap Visualizer:** A dynamic representation of the current keymap, allowing users to toggle through layers and see active combos.
+*   **Interactive Keymap Visualizer:** A dynamic representation of the current keymap, allowing users to toggle through layers and see active combos. Supports Spanish (ES-ISO) locale visualization.
 *   **Handwiring & Build Guide:** Documentation covering the hardware aspect of the Fifi keyboard, from component selection to matrix wiring.
 
 ## 5. Maintenance Philosophy
