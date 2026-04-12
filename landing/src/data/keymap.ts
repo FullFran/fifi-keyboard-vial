@@ -122,7 +122,7 @@ export const layers: Layer[] = [
       // Row 1 (left)
       { label: 'Q' },
       { label: 'W' },
-      { label: 'E' },
+      { label: 'E', sublabel: '€' },
       { label: 'R' },
       { label: 'T' },
       // Row 1 (right)  
@@ -132,7 +132,7 @@ export const layers: Layer[] = [
       { label: 'O' },
       { label: 'P' },
       // Row 2 (left) - Home Row Mods
-      { label: 'A', hold: 'GUI' },
+      { label: 'A', hold: 'Gui' },
       { label: 'S', hold: 'Alt' },
       { label: 'D', hold: 'Ctrl' },
       { label: 'F', hold: 'Shift' },
@@ -142,7 +142,7 @@ export const layers: Layer[] = [
       { label: 'J', hold: 'Shift' },
       { label: 'K', hold: 'Ctrl' },
       { label: 'L', hold: 'Alt' },
-      { label: ';', hold: 'GUI' },
+      { label: ';', hold: 'Gui' },
       // Row 3 (left)
       { label: 'Z' },
       { label: 'X' },
@@ -157,100 +157,100 @@ export const layers: Layer[] = [
       { label: '/' },
       // Thumbs (left)
       { label: 'Del' },
-      { label: 'Tab', hold: 'Lower' },
+      { label: 'Tab', hold: 'Núm' },
       { label: 'Space' },
       // Thumbs (right)
-      { label: 'Game', sublabel: 'TO(4)' },
-      { label: 'Enter', hold: 'Raise' },
-      { label: '⌫' },
+      { label: 'Juego' },
+      { label: 'Intro', hold: 'Nav' },
+      { label: 'Bsp' },
     ]
   },
   {
-    name: 'Lower',
+    name: 'Números',
     color: '#22c55e',
     keys: [
       // Row 1
-      { label: 'Q' },
+      { label: '¿' },
       { label: '↑' },
-      { label: '$' },
+      { label: '$', hold: 'Mayús', sublabel: '4' },
       { label: 'R' },
       { label: 'T' },
-      { label: ')' },
-      { label: '7' },
-      { label: '8' },
-      { label: '9' },
-      { label: ']' },
+      { label: '=', hold: 'Mayús', sublabel: '0' },
+      { label: '7', sublabel: '/' },
+      { label: '8', sublabel: '(' },
+      { label: '9', sublabel: ')' },
+      { label: '+', sublabel: '*' },
       // Row 2
-      { label: '←' },
-      { label: '↓' },
-      { label: '→' },
-      { label: '[', hold: 'Shift' },
-      { label: '{' },
-      { label: '}' },
-      { label: '4' },
-      { label: '5' },
-      { label: '6' },
-      { label: '/' },
+      { label: '\\', sublabel: '|' },
+      { label: '$', hold: 'AltGr', sublabel: '4' },
+      { label: '&', hold: 'Mayús', sublabel: '6' },
+      { label: '^', hold: 'Shift', sublabel: '[' },
+      { label: '^', hold: 'Mayús', sublabel: '[' },
+      { label: '+', hold: 'Mayús', sublabel: '*' },
+      { label: '4', sublabel: '$' },
+      { label: '5', sublabel: '%' },
+      { label: '6', sublabel: '&' },
+      { label: '-' },
       // Row 3
-      { label: '\\' },
-      { label: '|' },
+      { label: '<' },
+      { label: '>', hold: 'Mayús' },
       { label: 'C', hold: 'Ctrl' },
-      { label: '.', hold: 'Alt' },
+      { label: ':', hold: 'AltGr' },
       { label: 'B' },
       { label: '0' },
-      { label: '1' },
-      { label: '2' },
-      { label: '3' },
-      { label: '&' },
+      { label: '1', sublabel: '!' },
+      { label: '2', sublabel: '"' },
+      { label: '3', sublabel: '·' },
+      { label: '7', hold: 'Mayús', sublabel: '/' },
       // Thumbs
       { label: '▽' },
       { label: '▽' },
-      { label: 'MO(6)', sublabel: 'Mouse' },
+      { label: 'Ratón' },
       { label: '▽' },
-      { label: 'Enter', hold: 'Adjust' },
-      { label: '⌫' },
+      { label: 'Intro', hold: 'RGB' },
+      { label: 'Bsp' },
     ]
   },
   {
-    name: 'Raise',
+    name: 'Navegación',
     color: '#f59e0b',
     keys: [
-      // Row 1 - RSFT(KC_1), RALT(KC_2), RALT(KC_3), RSFT(KC_4), RSFT(KC_5)
-      { label: '!' },               // RSFT(KC_1) → !
-      { label: '@', sublabel: 'AltGr' },  // RALT(KC_2) → @
-      { label: '#', sublabel: 'AltGr' },  // RALT(KC_3) → #
-      { label: '$' },               // RSFT(KC_4) → $
-      { label: '%' },               // RSFT(KC_5) → %
+      // Row 1
+      { label: '!', hold: 'Mayús', sublabel: '1' },
+      { label: '@', hold: 'AltGr', sublabel: '2' },
+      { label: '#', hold: 'AltGr', sublabel: '3' },
+      { label: '$', hold: 'Mayús', sublabel: '4' },
+      { label: '%', hold: 'Mayús', sublabel: '5' },
       { label: 'F10' },
       { label: 'F11' },
-      { label: '⬆', sublabel: 'Scroll' },
-      { label: '⬇', sublabel: 'Scroll' },
-      { label: '_' },               // S(KC_MINS) → _
-      // Row 2 - RALT(KC_GRV), RALT(KC_QUOT), RALT(KC_LBRC), S(KC_8), KC_MINS
-      { label: '\\', sublabel: 'AltGr' },  // RALT(KC_GRV) → \ 
-      { label: '{', sublabel: 'AltGr' },   // RALT(KC_QUOT) → {
-      { label: '[', sublabel: 'AltGr' },   // RALT(KC_LBRC) → [
-      { label: '(' },               // S(KC_8) → (
-      { label: "'" },               // KC_MINS → ' (on ES keyboard)
+      { label: 'Wheel', sublabel: '↑' },
+      { label: 'Wheel', sublabel: '↓' },
+      { label: '?', hold: 'Mayús' },
+      // Row 2
+      { label: '\\', hold: 'AltGr' },
+      { label: '{', hold: 'AltGr' },
+      { label: '[', hold: 'AltGr' },
+      { label: '(', hold: 'Mayús', sublabel: '8' },
+      { label: '?' },
       { label: '←' },
       { label: '↓' },
       { label: '↑' },
       { label: '→' },
-      { label: 'RClick' },
-      // Row 3 - RSFT(KC_6), RALT(KC_BSLS), RALT(KC_RBRC), S(KC_9), RSFT(KC_2)
-      { label: '&' },               // RSFT(KC_6) → &
-      { label: '}', sublabel: 'AltGr' },   // RALT(KC_BSLS) → }
-      { label: ']', sublabel: 'AltGr' },   // RALT(KC_RBRC) → ]
-      { label: ')' },               // S(KC_9) → )
-      { label: '"' },               // RSFT(KC_2) → "
-      { label: '◀', sublabel: 'Mouse' },
-      { label: '▼', sublabel: 'Mouse' },
-      { label: '▲', sublabel: 'Mouse' },
-      { label: '▶', sublabel: 'Mouse' },
-      { label: 'LClick' },
+      { label: 'M2' },
+      // Row 3
+      { label: '&', hold: 'Mayús', sublabel: '6' },
+      { label: '}', hold: 'AltGr' },
+      { label: ']', hold: 'AltGr' },
+      { label: ')', hold: 'Mayús', sublabel: '9' },
+      { label: '@', hold: 'Mayús', sublabel: '2' },
+      { label: 'Mouse', sublabel: '←' },
+      { label: 'Mouse', sublabel: '↓' },
+      { label: 'Mouse', sublabel: '↑' },
+      { label: 'Mouse', sublabel: '→' },
+      { label: 'M1' },
       // Thumbs
       { label: '▽' },
-      { label: 'Tab', hold: 'Adjust' },
+      { label: 'Tab', hold: 'RGB' },
       { label: '▽' },
       { label: '▽' },
       { label: '▽' },
@@ -304,7 +304,7 @@ export const layers: Layer[] = [
     ]
   },
   {
-    name: 'Game',
+    name: 'Gaming',
     color: '#ef4444',
     keys: [
       // Row 1
@@ -350,7 +350,7 @@ export const layers: Layer[] = [
     ]
   },
   {
-    name: 'Game Num',
+    name: 'Gaming Num',
     color: '#f97316',
     keys: [
       // Row 1
@@ -396,7 +396,7 @@ export const layers: Layer[] = [
     ]
   },
   {
-    name: 'Mouse',
+    name: 'Ratón',
     color: '#8b5cf6',
     keys: [
       // Row 1
@@ -505,4 +505,3 @@ export const combos: Combo[] = [
   { keys: ['X', 'C'], output: 'Copy', description: 'Ctrl+C shortcut combo' },
   { keys: ['C', 'V'], output: 'Paste', description: 'Ctrl+V shortcut combo' },
 ];
-
