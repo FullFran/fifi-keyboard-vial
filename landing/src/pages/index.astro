@@ -10,6 +10,7 @@ const base = import.meta.env.BASE_URL;
 <Layout title="Fifi Keyboard - Keymap Visualizer">
   <main class="main">
     <header class="hero">
+      <a class="hero__back" href="https://www.fullfran.com/">← fullfran.com</a>
       <div class="hero__badge">Vial-QMK Firmware</div>
       <h1 class="hero__title">
         Fifi <span class="hero__highlight">Keyboard</span>
@@ -90,6 +91,26 @@ const base = import.meta.env.BASE_URL;
     flex-direction: column;
     align-items: center;
     padding: 2rem 1rem;
+  }
+
+  .hero__back {
+    display: block;
+    width: fit-content;
+    margin: 0 auto 1.25rem;
+    padding: 0.5rem 0.9rem;
+    border: 1px solid var(--color-border);
+    border-radius: 999px;
+    color: var(--color-text-secondary);
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    text-decoration: none;
+    transition: color 0.2s, border-color 0.2s;
+  }
+
+  .hero__back:hover,
+  .hero__back:focus-visible {
+    color: var(--color-accent);
+    border-color: var(--color-accent);
   }
 
   .hero {
